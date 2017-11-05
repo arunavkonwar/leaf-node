@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= article.title
+  h6 Written by
+    b  #{author}
+  br
+  h3=article.photo
+  img(src="http://localhost:3000/images/"+article.photo , alt=article.photo, style='width:350px;height:250px;')
+  h4
+    b Common Name
+  p= article.body
+  h4
+    b Picture Type
+  p= article.location
+  h4
+    b Shape
+  p= article.country
+  h4
+    b Margin/Edge
+  p= article.completed
+  hr
+  if user
+    if user.id ==article.author
+      a.btn.btn-default(href='/articles/edit/'+article._id) Edit
+      a.btn.btn-danger.delete-article(href='#',data-id=article._id) Delete

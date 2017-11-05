@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/articles/edit/'+article._id)
+    #form-group
+      label Scientific Name:
+      input.form-control(name='title', type='text', value=article.title)
+    #form-group
+      label Author:
+      input.form-control(name='author', type='text', value=article.author)
+    #form-group
+      label Common Name:
+      textarea.form-control(name='body')= article.body
+    #form-group
+      label Picture Type:
+      textarea.form-control(name='location')= article.location
+    #form-group
+      label Shape:
+      textarea.form-control(name='country')= article.country
+    #form-group
+      label Margin/Edge:
+      textarea.form-control(name='completed')= article.completed
+    #form-group
+      label Photo:
+      textarea.form-control(name='photo')= article.photo
+    br
+    input.btn.btn-primary(type='submit',value='Submit')

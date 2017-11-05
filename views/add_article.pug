@@ -1,0 +1,44 @@
+extends layout
+
+
+block content
+  h1 #{title}
+  form(method='POST', action='/articles/add')
+    #form-group
+      label Scientific Name:
+      input.form-control(name='title', type='text')
+    #form-group
+      label Common Name:
+      textarea.form-control(name='body')
+    #form-group
+      label Picture Type:
+      textarea.form-control(name='location')
+    #form-group
+      h3 Leaf Attribute
+      label Shape:
+      textarea.form-control(name='country')
+    #form-group
+      label Margin Edge:
+      textarea.form-control(name='completed')
+    #form-group
+      label Division:
+      textarea.form-control(name='Division')
+    #form-group
+      label Photo:
+      textarea.form-control(name='photo')
+    br
+    input.btn.btn-primary(type='submit',value='Submit')
+
+
+  form(method='post', enctype='multipart/form-data', action='/profile')
+    input(type='file', name='profileImage', multiple onchange='alertFilename()')
+    |
+    input.btn.btn-primary(type='submit', name='submit', value='Upload Photo')
+
+    script.
+      function alertFilename()
+           {
+               var thefile = document.getElementsByName('profileImage');
+               alert('fuck off');
+               document.getElementsByName('photo')='hi' ;
+           }
