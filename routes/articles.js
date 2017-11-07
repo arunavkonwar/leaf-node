@@ -12,6 +12,12 @@ router.get('/add', ensureAuthenticated, function(req, res){
     title:'Add Leaf'
   });
 });
+//dashboard
+router.get('/dashboard', ensureAuthenticated, function(req, res){
+  res.render('dashboard', {
+    title:'Dashboard'
+  });
+});
 
 // Add Submit POST Route
 router.post('/add', function(req, res){
@@ -38,6 +44,10 @@ router.post('/add', function(req, res){
     article.photo = req.body.photo;
     article.completed = req.body.completed;
     article.division = req.body.division;
+    article.season = req.body.season;
+    article.disease = req.body.disease;
+    article.description = req.body.description;
+    article.place = req.body.place;
 
     article.save(function(err){
       if(err){
@@ -70,13 +80,18 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
 // Update Submit POST Route
 router.post('/edit/:id', function(req, res){
   let article = {};
-  article.title = req.body.title;
+  article.scientificName = req.body.scientificName;
   article.author = req.body.author;
   article.body = req.body.body;
   article.location = req.body.location;
   article.country = req.body.country;
   article.photo = req.body.photo;
   article.completed = req.body.completed;
+  article.division = req.body.division;
+  article.season = req.body.season;
+  article.disease = req.body.disease;
+  article.description = req.body.description;
+  article.place = req.body.place;
 
   let query = {_id:req.params.id}
 

@@ -14,13 +14,67 @@ block content
       textarea.form-control(name='body')= article.body
     #form-group
       label Picture Type:
-      textarea.form-control(name='location')= article.location
+      div(class="input-group")
+        select(class="selectpicker form-control" name="location")
+          option(value='Isolated Leaf') Isolated Leaf
+          option(value='Cluster of leaves') Cluster of Leaves
+          option(value='Partial Tree') Partial Tree
+          option(value='Full Tree') Full Tree 
     #form-group
       label Shape:
-      textarea.form-control(name='country')= article.country
+      div(class="input-group")
+        select(class="selectpicker form-control" name="country")
+          option(value='Ovate') Ovate
+          option(value='Obovate') Obovate
+          option(value='Lanceolate') Lanceolate
+          option(value='Oblanceolate') Oblanceolate
+          option(value='Cordate') Cordate
+          option(value='Obcordate') Obcordate
+          option(value='Elliptical') Elliptical
+          option(value='Oblong') Oblong
+          option(value='Cuneate') Cuneate
+          option(value='Linear') Linear
+          option(value='Peltate') Peltate
+          option(value='Spatulate') Spatulate
+          option(value='Reniform') Reniform
+          option(value='Hastate') Hastate
     #form-group
       label Margin/Edge:
-      textarea.form-control(name='completed')= article.completed
+      div(class="input-group")
+        select(class="selectpicker form-control" name="completed")
+          option(value='Entire') Entire
+          option(value='Dentate') Dentate
+          option(value='Serrate') Serrate
+          option(value='Incised') Incised
+    #form-group
+      label Division:
+      div(class="input-group")
+        select(class="selectpicker form-control" name="division")
+          option(value='Simple') Simple
+          option(value='Compound (Pinnate) Bipennate') Compound (Pinnate) Bipennate
+          option(value='Compound (Pinnate) Tripennate') Compound (Pinnate) Tripennate
+          option(value='Compound (Pinnate) Decompund') Compound (Pinnate) Decompund
+          option(value='Compound (Palmate) Unifoliate') Compound (Palmate) Unifoliate
+          option(value='Compound (Palmate) Bifoliate') Compound (Palmate) Bifoliate
+          option(value='Compound (Palmate) Trifoliate') Compound (Palmate) Trifoliate
+    #form-group
+      label Season:
+      div(class="input-group")
+        select(class="selectpicker form-control" name="season")
+          option(value='Spring') Spring
+          option(value='Summer') Summer
+          option(value='Monsoon') Monsoon
+          option(value='Autumn') Autumn
+          option(value='Winter') Winter
+    #form-group
+      label Disease:
+      textarea.form-control(name='disease')= article.disease
+    #form-group
+      label Description:
+      textarea.form-control(name='description')= article.description
+    #form-group
+      label Location:
+      textarea.form-control(name='place')= article.place
     #form-group
       label Photo:
       textarea.form-control(name='photo')= article.photo

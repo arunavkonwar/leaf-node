@@ -34,6 +34,22 @@ let articleSchema = mongoose.Schema({
   division:{
     type: String,
     required: true
+  },
+  season:{
+    type: String,
+    required: true
+  },
+  disease:{
+    type: String,
+    required: true
+  },
+  description:{
+    type: String,
+    required: true
+  },
+  place:{
+    type: String,
+    required: true
   }
 });
 
