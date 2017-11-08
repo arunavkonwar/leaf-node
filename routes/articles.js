@@ -13,6 +13,7 @@ router.get('/add', ensureAuthenticated, function(req, res){
   });
 });
 //dashboard
+
 router.get('/dashboard', ensureAuthenticated, function(req, res){
   res.render('dashboard', {
     title:'Dashboard'
@@ -48,6 +49,7 @@ router.post('/add', function(req, res){
     article.disease = req.body.disease;
     article.description = req.body.description;
     article.place = req.body.place;
+    article.annotation = req.body.annotation;
 
     article.save(function(err){
       if(err){
@@ -92,6 +94,7 @@ router.post('/edit/:id', function(req, res){
   article.disease = req.body.disease;
   article.description = req.body.description;
   article.place = req.body.place;
+  article.annotation = req.body.annotation;
 
   let query = {_id:req.params.id}
 

@@ -19,7 +19,7 @@ block content
           option(value='Isolated Leaf') Isolated Leaf
           option(value='Cluster of leaves') Cluster of Leaves
           option(value='Partial Tree') Partial Tree
-          option(value='Full Tree') Full Tree 
+          option(value='Full Tree') Full Tree
     #form-group
       label Shape:
       div(class="input-group")
@@ -75,6 +75,12 @@ block content
     #form-group
       label Location:
       textarea.form-control(name='place')= article.place
+    #form-group
+      label Annotation Completed?:
+      div(class="input-group")
+        select(class="selectpicker form-control" name="annotation")
+          option(value='yes') Yes
+          option(value='no') No
     #form-group
       label Photo:
       textarea.form-control(name='photo')= article.photo

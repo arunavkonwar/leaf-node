@@ -34,6 +34,9 @@ block content
   h4
     b Location
   p= article.place
+  h4
+    b Annotation completed?
+  p= article.annotation
   hr
   if user
     if user.id ==article.author

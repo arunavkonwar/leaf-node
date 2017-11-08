@@ -50,6 +50,10 @@ let articleSchema = mongoose.Schema({
   place:{
     type: String,
     required: true
+  },
+  annotation:{
+    type: String,
+    required: true
   }
 });
 
