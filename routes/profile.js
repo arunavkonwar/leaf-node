@@ -15,9 +15,10 @@ var upload = multer({ storage: storage });
 
 
 router.post('/', upload.single('profileImage'), function (req, res) {
-    console.log(req.files);
+    console.log(req);
+    console.log("-------------");
   res.send(req.files);
-  res.redirect('/articles/add?photo=a');
+  res.redirect('/articles/add');
 });
 
 
