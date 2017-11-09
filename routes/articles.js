@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+
+
+
+
+
+
 // Article Model
 let Article = require('../models/article');
 // User Model
@@ -12,13 +18,36 @@ router.get('/add', ensureAuthenticated, function(req, res){
     title:'Add Leaf'
   });
 });
-//dashboard
-
+//dashboard MAIN
+/*
 router.get('/dashboard', ensureAuthenticated, function(req, res){
   res.render('dashboard', {
     title:'Dashboard'
   });
 });
+
+*/
+//Dashboard TEST
+/*
+router.get('/dashboard', ensureAuthenticated, function(req, res){
+  if(errors){
+    console.log(errors)
+  } else {
+    http.createServer(function (req, res) {
+      res.write('Hello World!'); //write a response to the client
+      res.end(); //end the response
+    }).listen(8080);
+  }
+});
+*/
+
+
+//test page
+router.get('/test', function (req, res) {
+  res.render('test', { title: 'Hey', message: 'Hello there!'});
+});
+
+
 
 // Add Submit POST Route
 router.post('/add', function(req, res){

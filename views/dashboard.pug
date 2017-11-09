@@ -1,1 +1,21 @@
-extends layout
+doctype html
+html(lang='en')
+  head
+    title Jade
+    input#id1(type='text')
+    h1 Number of articles
+    script(type='text/javascript').
+      foo = true;
+      bar = function () {};
+      if (foo) {
+      document.getElementById('id1').value='text to be displayed' ;
+      }
+  body
+    h1 Jade - node template engine
+    #container.col
+      p You are amazing
+      p
+        | Jade is a terse and simple
+        | templating language with a
+        | strong focus on performance
+        | and powerful features.

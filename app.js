@@ -8,6 +8,46 @@ const session = require('express-session');
 const passport = require('passport');
 const config = require('./config/database');
 
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/leaf-nodekb";
+
+/*
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var query = { title: 'nadal' };
+  db.collection("articles").find(query).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
+
+*/
+
+//FOR DASHBOARD
+var http = require('http');
+
+//create a server object:
+http.createServer(function (req, res) {
+   //end the response
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var query = { title: 'nadal' };
+    db.collection("articles").find(query).toArray(function(err, result) {
+      if (err) throw err;
+      console.log(result);
+      res.write('result works'); //write a response to the client
+      res.end();
+      db.close();
+    });
+  });
+
+}).listen(8080); //the server object listens on port 8080
+
+
+
+
+
 mongoose.connect(config.database);
 let db = mongoose.connection;
 
