@@ -28,22 +28,38 @@ MongoClient.connect(url, function(err, db) {
 var http = require('http');
 
 //create a server object:
-http.createServer(function (req, res) {
-   //end the response
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var query = { title: 'nadal' };
-    db.collection("articles").find(query).toArray(function(err, result) {
+
+  http.createServer(function (req, res) {
+     //end the response
+    MongoClient.connect(url, function(err, db) {
       if (err) throw err;
-      console.log(result);
-      res.write('result works'); //write a response to the client
-      res.end();
-      db.close();
+      //var query = { title: 'nadal' };
+      /*
+      db.collection("articles").find(query).toArray(function(err, result) {
+        if (err) throw err;
+        console.log(result);
+        res.write('result works'); //write a response to the client
+        res.end();
+        db.close();
+      });
+      */
+
+      db.collection('articles', function(err, collection) {
+                      collection.count({},function(err, count) {
+                         res.write('records= ' + count);//print 0 records
+                         //res.end();
+                      });
+          });
+      db.collection('articles', function(err, collection) {
+                      collection.count({'annotation':'yes'},function(err, annotationCompleted) {
+                         res.write('  Total annotations completed= ' + annotationCompleted);//print 0 records
+                         res.end();
+                      });
+          });
+
     });
-  });
 
-}).listen(8080); //the server object listens on port 8080
-
+  }).listen(8080); //the server object listens on port 8080
 
 
 
