@@ -3,7 +3,7 @@ extends layout
 
 block content
   h1 #{title}
-  form(method='POST', action='/articles/add')
+  form(method='POST', action='/articles/add', enctype='multipart/form-data')
     #form-group
       label Scientific Name:
       input.form-control(name='title', type='text')
@@ -88,18 +88,5 @@ block content
           option(value='yes') Yes
           option(value='no') No
     br
-    input.btn.btn-primary(type='submit',value='Submit')
-
-
-  form(method='post', enctype='multipart/form-data', action='/profile')
     input(type='file', name='profileImage', multiple onchange='alertFilename()')
-    |
-    input.btn.btn-primary(type='submit', name='submit', value='Upload Photo')
-
-    script.
-      function alertFilename()
-           {
-               var thefile = document.getElementsByName('profileImage');
-               alert('click Upload to complete');
-               document.getElementsByName('photo')='hi' ;
-           }
+    input.btn.btn-primary(type='submit',value='Submit')
