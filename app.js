@@ -10,7 +10,8 @@ const config = require('./config/database');
 
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/leaf-nodekb";
-
+var fs = require('fs');
+var ejs = require('ejs');
 
 //FOR DASHBOARD
 var http = require('http');
@@ -24,19 +25,42 @@ http.createServer(function (req, res) {
     db.collection('articles', function(err, collection) {
                     collection.count({},function(err, count) {
                        res.writeHead(200, { 'Content-Type': 'text/html' });
-                       res.write('records= ' + count);
+                       //res.write('records= ' + count);
+                       fs.readFile('dashboard.html', 'utf-8', function(err, content) {
+                           if (err) {
+                             res.end('error occurred');
+                             return;
+                           }
+                           var temp = 'some temp';  //here you assign temp variable with needed value
 
+                           var renderedHtml = ejs.render(content, {count: count});  //get redered HTML code
+                           res.end(renderedHtml);
+                         });
                        //res.end();
                     });
         });
     db.collection('articles', function(err, collection) {
                     collection.count({'annotation':'yes'},function(err, annotationCompleted) {
 
-                       res.write('<br>  <b>Total annotations completed= ' + annotationCompleted + '</b>');//print 0 records
-                       res.end();
+                    //  res.write('<br>  Total annotations completed= ' + annotationCompleted );//print 0 records
+                       //res.end();
+                       /*
+                       fs.readFile('dashboard.html', 'utf-8', function(err, content) {
+                           if (err) {
+                             res.end('error occurred');
+                             return;
+                           }
+                           var temp = 'some temp';  //here you assign temp variable with needed value
+
+                           var renderedHtml1 = ejs.render(content, {annotationCompleted: annotationCompleted});  //get redered HTML code
+                           res.end(renderedHtml1);
+                         });
+                         */
                     });
         });
+
   });
+
 }).listen(8080); //the server object listens on port 8080
 
 
