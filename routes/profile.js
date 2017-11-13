@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
-var a='';
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/images/')

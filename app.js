@@ -11,55 +11,33 @@ const config = require('./config/database');
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/leaf-nodekb";
 
-/*
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var query = { title: 'nadal' };
-  db.collection("articles").find(query).toArray(function(err, result) {
-    if (err) throw err;
-    console.log(result);
-    db.close();
-  });
-});
-
-*/
 
 //FOR DASHBOARD
 var http = require('http');
 
 //create a server object:
 
-  http.createServer(function (req, res) {
-     //end the response
-    MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      //var query = { title: 'nadal' };
-      /*
-      db.collection("articles").find(query).toArray(function(err, result) {
-        if (err) throw err;
-        console.log(result);
-        res.write('result works'); //write a response to the client
-        res.end();
-        db.close();
-      });
-      */
+http.createServer(function (req, res) {
+   //end the response
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    db.collection('articles', function(err, collection) {
+                    collection.count({},function(err, count) {
+                       res.writeHead(200, { 'Content-Type': 'text/html' });
+                       res.write('records= ' + count);
 
-      db.collection('articles', function(err, collection) {
-                      collection.count({},function(err, count) {
-                         res.write('records= ' + count);//print 0 records
-                         //res.end();
-                      });
-          });
-      db.collection('articles', function(err, collection) {
-                      collection.count({'annotation':'yes'},function(err, annotationCompleted) {
-                         res.write('  Total annotations completed= ' + annotationCompleted);//print 0 records
-                         res.end();
-                      });
-          });
+                       //res.end();
+                    });
+        });
+    db.collection('articles', function(err, collection) {
+                    collection.count({'annotation':'yes'},function(err, annotationCompleted) {
 
-    });
-
-  }).listen(8080); //the server object listens on port 8080
+                       res.write('<br>  <b>Total annotations completed= ' + annotationCompleted + '</b>');//print 0 records
+                       res.end();
+                    });
+        });
+  });
+}).listen(8080); //the server object listens on port 8080
 
 
 
