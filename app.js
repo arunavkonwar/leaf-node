@@ -15,6 +15,7 @@ var ejs = require('ejs');
 
 //FOR DASHBOARD
 var http = require('http');
+var count='';
 
 //create a server object:
 
@@ -24,8 +25,9 @@ http.createServer(function (req, res) {
     if (err) throw err;
     db.collection('articles', function(err, collection) {
                     collection.count({},function(err, count) {
-                       res.writeHead(200, { 'Content-Type': 'text/html' });
+                       //res.writeHead(200, { 'Content-Type': 'text/html' });
                        //res.write('records= ' + count);
+                       //res.end();
                        fs.readFile('dashboard.html', 'utf-8', function(err, content) {
                            if (err) {
                              res.end('error occurred');
@@ -36,11 +38,11 @@ http.createServer(function (req, res) {
                            var renderedHtml = ejs.render(content, {count: count});  //get redered HTML code
                            res.end(renderedHtml);
                          });
-                       //res.end();
                     });
+
         });
     db.collection('articles', function(err, collection) {
-                    collection.count({'annotation':'yes'},function(err, annotationCompleted) {
+                    collection.count({'annotation':'yes'},function(err, annote) {
 
                     //  res.write('<br>  Total annotations completed= ' + annotationCompleted );//print 0 records
                        //res.end();
