@@ -24,7 +24,40 @@
   </style>
 </head>
 <body>
+  <!--
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+       <a class="navbar-brand" href="#">Navbar</a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
 
+       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+         <ul class="navbar-nav mr-auto">
+           <li class="nav-item active">
+             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="#">Link</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link disabled" href="#">Disabled</a>
+           </li>
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+             <div class="dropdown-menu" aria-labelledby="dropdown01">
+               <a class="dropdown-item" href="#">Action</a>
+               <a class="dropdown-item" href="#">Another action</a>
+               <a class="dropdown-item" href="#">Something else here</a>
+             </div>
+           </li>
+         </ul>
+         <form class="form-inline my-2 my-lg-0">
+           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+         </form>
+       </div>
+     </nav>
+   -->
 <nav class="navbar navbar-inverse visible-xs">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -52,16 +85,14 @@
       <h2>Leaf Project</h2>
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="http://localhost:3000">Home</a></li>
-        <li><a href="#section2">Age</a></li>
-        <li><a href="#section3">Gender</a></li>
-        <li><a href="#section3">Geo</a></li>
+
       </ul><br>
     </div>
     <br>
 
     <div class="col-sm-9">
       <div class="well">
-        <h4>Dashboard</h4>
+        <h2><b>Dashboard</b></h2>
         <p></p>
       </div>
       <div class="row">
@@ -74,56 +105,34 @@
           </a>
         </div>
         <div class="col-sm-3">
+          <a href='http://localhost:3000/annotated'>
           <div class="well">
             <h4>Total Annotated Leaves</h4>
             <p></p>
           </div>
+        </a>
         </div>
         <div class="col-sm-3">
+          <a href='http://localhost:3000/notannotated'>
           <div class="well">
             <h4>Partially Annotated leaves</h4>
-            <p>10 Million</p>
+            <p></p>
           </div>
+        </a>
         </div>
         <div class="col-sm-3">
+          <a href='http://localhost:3000/myleaves'>
           <div class="well">
             <h4>My leaves</h4>
-            <p>30%</p>
+            <p></p>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="well">
-
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="well">
-
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="well">
-
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="well">
-            <p>Text</p>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="well">
-            <p>Text</p>
-          </div>
+        </a>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 
 </body>
 </html>

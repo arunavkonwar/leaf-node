@@ -67,6 +67,29 @@ http.createServer(function (req, res) {
 
 
 
+//For ANNOTATION Page----------------------------
+
+http.createServer(function (req, res) {
+   //end the response
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    fs.readFile('public/annotation_public/annotate.html', 'utf-8', function(err, content) {
+        if (err) {
+          res.end('error occurred');
+          return;
+        }
+        var temp = 'some temp';  //here you assign temp variable with needed value
+
+        var renderedHtml = ejs.render(content, {count: count});  //get redered HTML code
+        res.end(renderedHtml);
+      });
+
+  });
+
+}).listen(8081); //the server object listens on port 8081
+
+// END OF ANNOTATION PAGE--------------------------
+
 
 mongoose.connect(config.database);
 let db = mongoose.connection;
@@ -156,6 +179,51 @@ app.get('/', function(req, res){
     }
   });
 });
+
+// Query_annotated Route
+app.get('/annotated', function(req, res){
+  Article.find({}, function(err, articles){
+    if(err){
+      console.log(err);
+    } else {
+      res.render('query_annotated', {
+        title:'Annotated Leaves completed',
+        articles: articles
+      });
+    }
+  });
+});
+
+
+// Query NOT annotated Route
+app.get('/notannotated', function(req, res){
+  Article.find({}, function(err, articles){
+    if(err){
+      console.log(err);
+    } else {
+      res.render('query_notannotated', {
+        title:'Annotation not complete',
+        articles: articles
+      });
+    }
+  });
+});
+
+// Query My Leaves Route
+app.get('/myleaves', function(req, res){
+  Article.find({}, function(err, articles){
+    if(err){
+      console.log(err);
+    } else {
+      res.render('query_myleaves', {
+        title:'Leaves annotated by me',
+        articles: articles
+      });
+    }
+  });
+});
+
+
 
 // Route Files
 let articles = require('./routes/articles');

@@ -5,7 +5,7 @@ block content
   h1 #{title}
   ul.list-group
     each article, i in articles
-      if (article.annotation=='yes')
+      if (article.annotation=='no')
         li.list-group-item
           a(href="/articles/"+article._id)= i+1 + '. ' + article.title
   h1 #{i}
