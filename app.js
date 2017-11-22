@@ -1,3 +1,5 @@
+process.env.PWD = process.cwd()
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -28,7 +30,7 @@ http.createServer(function (req, res) {
                        //res.writeHead(200, { 'Content-Type': 'text/html' });
                        //res.write('records= ' + count);
                        //res.end();
-                       fs.readFile('dashboard.html', 'utf-8', function(err, content) {
+                       fs.readFile('dashboard_new.html', 'utf-8', function(err, content) {
                            if (err) {
                              res.end('error occurred');
                              return;
@@ -68,27 +70,81 @@ http.createServer(function (req, res) {
 
 
 //For ANNOTATION Page----------------------------
-
+/*
 http.createServer(function (req, res) {
    //end the response
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    fs.readFile('public/annotation_public/annotate.html', 'utf-8', function(err, content) {
+    fs.readFile('annotate_new.html', 'utf-8', function(err, content) {
         if (err) {
           res.end('error occurred');
           return;
         }
-        var temp = 'some temp';  //here you assign temp variable with needed value
-
-        var renderedHtml = ejs.render(content, {count: count});  //get redered HTML code
-        res.end(renderedHtml);
+        //var renderedHtml = ejs.render(content, {count: count});  //get redered HTML code
+        //res.end(renderedHtml);
+        res.end(content)
       });
-
   });
 
 }).listen(8081); //the server object listens on port 8081
-
+*/
 // END OF ANNOTATION PAGE--------------------------
+
+
+//For NEW ANNOTATION Page----------------------------
+
+http.createServer(function (request, response) {
+   //end the response
+   var filePath = '.' + request.url;
+     if (filePath == './')
+         filePath = './annotate_new.html';
+
+     var extname = path.extname(filePath);
+     var contentType = 'text/html';
+     switch (extname) {
+         case '.js':
+             contentType = 'text/javascript';
+             break;
+         case '.css':
+             contentType = 'text/css';
+             break;
+         case '.json':
+             contentType = 'application/json';
+             break;
+         case '.png':
+             contentType = 'image/png';
+             break;
+         case '.jpg':
+             contentType = 'image/jpg';
+             break;
+         case '.wav':
+             contentType = 'audio/wav';
+             break;
+     }
+
+     fs.readFile(filePath, function(error, content) {
+         if (error) {
+             if(error.code == 'ENOENT'){
+                 fs.readFile('./404.html', function(error, content) {
+                     response.writeHead(200, { 'Content-Type': contentType });
+                     response.end(content, 'utf-8');
+                 });
+             }
+             else {
+                 response.writeHead(500);
+                 response.end('Sorry, check with the site admin for error: '+error.code+' ..\n');
+                 response.end();
+             }
+         }
+         else {
+             response.writeHead(200, { 'Content-Type': contentType });
+             response.end(content, 'utf-8');
+         }
+     });
+
+}).listen(8081); //the server object listens on port 8081
+
+// END OF NEW ANNOTATION PAGE--------------------------
 
 
 mongoose.connect(config.database);
@@ -121,7 +177,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Set Public Folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(process.env.PWD + '/public'));
 
 // Express Session Middleware
 app.use(session({
@@ -194,7 +250,6 @@ app.get('/annotated', function(req, res){
   });
 });
 
-
 // Query NOT annotated Route
 app.get('/notannotated', function(req, res){
   Article.find({}, function(err, articles){
@@ -222,8 +277,6 @@ app.get('/myleaves', function(req, res){
     }
   });
 });
-
-
 
 // Route Files
 let articles = require('./routes/articles');
