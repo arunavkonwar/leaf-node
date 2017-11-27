@@ -66,65 +66,6 @@ router.post('/add', upload.single('profileImage'), function (req, res) {
 
 });
 
-///// NEW Edit post router
-
-router.post('/edit/:id', upload.single('profileImage'), function (req, res) {
-    //console.log(req);
-    console.log("-------------");
-    console.log(req.file.filename);
-
-    //return res.send(req.files);
-    //res.redirect('/articles/add');
-    ///req.checkBody('title','Title is required').notEmpty();
-    //req.checkBody('author','Author is required').notEmpty();
-    //req.checkBody('body','Body is required').notEmpty();
-    //req.checkBody('location','location is required').notEmpty();
-
-    // Get Errors
-    let errors = req.validationErrors();
-    if(errors){
-      res.render('edit_article', {
-        title:'New Edit Leaf',
-        errors:errors
-      });
-    } else {
-      let article = new Article();
-      article.title = req.body.title;
-      article.author = req.user._id;
-      article.body = req.body.body;
-      article.location = req.body.location;
-      article.country = req.body.country;
-      article.photo = req.file.filename;
-      article.completed = req.body.completed;
-      article.division = req.body.division;
-      article.season = req.body.season;
-      article.disease = req.body.disease;
-      article.description = req.body.description;
-      article.place = req.body.place;
-      article.annotation = req.body.annotation;
-
-      article.save(function(err){
-        if(err){
-          console.log(err);
-          return;
-        } else {
-          req.flash('success','Article Added');
-          console.log('success');
-          res.redirect('/');
-
-        }
-      });
-    }
-
-});
-
-
-
-
-
-
-
-
 
 // Article Model
 let Article = require('../models/article');
@@ -206,7 +147,7 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
 
 
 // Update Submit POST Route
-/*
+
 router.post('/edit/:id', upload.single('profileImage'), function(req, res){
   let article = {};
 
@@ -240,7 +181,7 @@ router.post('/edit/:id', upload.single('profileImage'), function(req, res){
     }
   });
 });
-*/
+
 
 // Delete Article
 router.delete('/:id', function(req, res){

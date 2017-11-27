@@ -78,7 +78,7 @@ block content
     #form-group
       label Photo:
       textarea.form-control(name='photo')= article.photo
-      img(src="http://localhost:3000/images/"+article.photo , alt=article.photo, style='width:350px;height:250px;')
+      img.annotatable(src="http://localhost:3000/images/"+article.photo , alt=article.photo, style='width:350px;height:250px;')
     #form-group
       label Annotation Completed?:
       div(class="input-group")
