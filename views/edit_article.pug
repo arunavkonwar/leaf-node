@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1 #{title}
-  form(method='POST', action='/articles/edit/'+article._id)
+  form(method='POST', action='/articles/edit/'+article._id , enctype='multipart/form-data')
     #form-group
       label Scientific Name:
       input.form-control(name='title', type='text', value=article.title)
@@ -78,5 +78,14 @@ block content
     #form-group
       label Photo:
       textarea.form-control(name='photo')= article.photo
+      img(src="http://localhost:3000/images/"+article.photo , alt=article.photo, style='width:350px;height:250px;')
+    #form-group
+      label Annotation Completed?:
+      div(class="input-group")
+        select(class="selectpicker form-control" name="annotation")
+          option(value='yes') Yes
+          option(value='no') No
     br
+    h4 Replace image by choosing another file below
+    input(type='file', name='profileImage', multiple onchange='alertFilename()')
     input.btn.btn-primary(type='submit',value='Submit')
