@@ -1,5 +1,7 @@
 extends layout
 
+
+
 block content
   h1 #{title}
   form(method='POST', action='/articles/edit/'+article._id , enctype='multipart/form-data')

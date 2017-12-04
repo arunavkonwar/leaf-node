@@ -1,0 +1,19 @@
+extends layout
+
+
+block content
+  h1 #{title}
+  form(method='POST', action='/leaves/add', enctype='multipart/form-data')
+    #form-group
+      label Scientific Name:
+      input.form-control(name='title', type='text')
+    #form-group
+      label Leaf Type:
+      textarea.form-control(name='leaf_type')
+    #form-group
+      label Photo:
+      textarea.form-control(name='photo')
+
+    br
+    input(type='file', name='profileImage', multiple onchange='alertFilename()')
+    input.btn.btn-primary(type='submit',value='Submit')

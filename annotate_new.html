@@ -63,12 +63,32 @@
         this is a test page
         <p> <%= count %></p>
 
-        <img src="public/leaf.jpg" class="annotatable" />
+        <img src="public/leaf.jpg" class="annotatable" id="lol"/>
 
+        <form action="http://localhost:3000/leaves/add" method="post" enctype="multipart/form-data">
+          <p><input type="text" name="annote_area" value="text default">
+          <p><button type="submit">Submit</button>
+            <button onclick="myFunction()">Click me</button>
+        </form>
+      -->
       </div>
-
+      <input type="text" id="yay" value="">
+      <button onclick="myFunction()">Click me</button>
+      <p id="demo"></p>
     </main><!-- /.container -->
+    <script type="text/javascript">
+    //var x= new array(5);
+    //var x=anno.getAnnotations();
+    //var height = canvas.height;
 
+    </script>
+
+    <script type="text/javascript">
+    function myFunction() {
+      document.getElementById("demo").innerHTML = "Height: " +anno.getAnnotations()["0"].shapes["0"].geometry.height ;
+      console.log(anno.getAnnotations());
+  }
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

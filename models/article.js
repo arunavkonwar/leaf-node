@@ -54,6 +54,10 @@ let articleSchema = mongoose.Schema({
   annotation:{
     type: String,
     required: true
+  },
+  annote_area:{
+    type: String,
+    required: true
   }
 });
 

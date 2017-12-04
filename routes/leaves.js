@@ -19,7 +19,6 @@ router.post('/add', upload.single('profileImage'), function (req, res) {
     //console.log(req);
     console.log("-------------");
     console.log(req.file.filename);
-
     //return res.send(req.files);
     //res.redirect('/articles/add');
     req.checkBody('title','Title is required').notEmpty();
@@ -31,39 +30,31 @@ router.post('/add', upload.single('profileImage'), function (req, res) {
     let errors = req.validationErrors();
 
     if(errors){
-      res.render('add_article', {
-        title:'Add Leaf',
+      res.render('add_leaf', {
+        title:'Individual Leaf',
         errors:errors
       });
     } else {
-      let article = new Article();
-      article.title = req.body.title;
-      article.author = req.user._id;
-      article.body = req.body.body;
-      article.location = req.body.location;
-      article.country = req.body.country;
-      article.photo = req.file.filename;
-      article.completed = req.body.completed;
-      article.division = req.body.division;
-      article.season = req.body.season;
-      article.disease = req.body.disease;
-      article.description = req.body.description;
-      article.place = req.body.place;
-      article.annotation = req.body.annotation;
+      let leaf = new Leaf();
+      leaf.title = req.body.title;
+      leaf.author = req.user._id;
+      leaf.leaf_type = req.body.leaf_type;
+      leaf.annotate_area = req.body.annotate_area;
+      leaf.photo = req.file.filename;
 
-      article.save(function(err){
+
+      leaf.save(function(err){
         if(err){
           console.log(err);
           return;
         } else {
-          req.flash('success','Article Added');
+          req.flash('success','Leaf Added');
           console.log('success');
           res.redirect('/');
 
         }
       });
     }
-
 });
 
 
@@ -71,10 +62,12 @@ router.post('/add', upload.single('profileImage'), function (req, res) {
 let Article = require('../models/article');
 // User Model
 let User = require('../models/user');
+//
+let Leaf = require('../models/leaf');
 
 // Add Route
 router.get('/add', ensureAuthenticated, function(req, res){
-  res.render('add_article', {
+  res.render('add_leaf', {
     title:'Add Leaf'
   });
 });
@@ -92,8 +85,10 @@ router.post('/add', function(req, res){
   //req.checkBody('author','Author is required').notEmpty();
   //req.checkBody('body','Body is required').notEmpty();
   //req.checkBody('location','location is required').notEmpty();
+
   // Get Errors
   let errors = req.validationErrors();
+
   if(errors){
     res.render('add_article', {
       title:'Add Leaf',
@@ -114,6 +109,7 @@ router.post('/add', function(req, res){
     article.description = req.body.description;
     article.place = req.body.place;
     article.annotation = req.body.annotation;
+
     article.save(function(err){
       if(err){
         console.log(err);
@@ -122,6 +118,7 @@ router.post('/add', function(req, res){
         req.flash('success','Article Added');
         console.log('success');
         res.redirect('/');
+
       }
     });
   }

@@ -278,6 +278,26 @@ app.get('/myleaves', function(req, res){
   });
 });
 
+// Query My Leaves Route
+app.get('/add_leaf', function(req, res){
+  Article.find({}, function(err, articles){
+    if(err){
+      console.log(err);
+    } else {
+      res.render('add_leaf', {
+        title:'Add Individual leaf',
+        articles: articles
+      });
+    }
+  });
+});
+
+
+
+
+
+
+
 // Route Files
 let articles = require('./routes/articles');
 let users = require('./routes/users');
