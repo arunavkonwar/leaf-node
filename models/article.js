@@ -4,60 +4,46 @@ let mongoose = require('mongoose');
 // Article Schema
 let articleSchema = mongoose.Schema({
   title:{
-    type: String,
-    required: true
+    type: String
   },
   author:{
-    type: String,
-    required: true
+    type: String
   },
   body:{
-    type: String,
-    required: true
+    type: String
   },
   location:{
-    type: String,
-    required: true
+    type: String
   },
   country:{
-    type: String,
-    required: true
+    type: String
   },
   photo:{
-    type: String,
-    required: true
+    type: String
   },
   completed:{
-    type: String,
-    required: true
+    type: String
   },
   division:{
     type: String,
-    required: true
   },
   season:{
-    type: String,
-    required: true
+    type: String
   },
   disease:{
-    type: String,
-    required: true
+    type: String
   },
   description:{
-    type: String,
-    required: true
+    type: String
   },
   place:{
-    type: String,
-    required: true
+    type: String
   },
   annotation:{
-    type: String,
-    required: true
+    type: String
   },
   annote_area:{
-    type: String,
-    required: true
+    type: String
   }
 });
 

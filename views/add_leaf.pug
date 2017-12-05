@@ -3,7 +3,7 @@ extends layout
 
 block content
   h1 #{title}
-  form(method='POST', action='/leaves/add', enctype='multipart/form-data')
+  form(method='POST', action='/articles/add', enctype='multipart/form-data')
     #form-group
       label Scientific Name:
       input.form-control(name='title', type='text')

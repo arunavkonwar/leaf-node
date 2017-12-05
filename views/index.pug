@@ -7,4 +7,5 @@ block content
     each article, i in articles
       li.list-group-item
         a(href="/articles/"+article._id)= i+1 + '. ' + article.title
+        img(src="http://localhost:3000/images/"+article.photo , alt=article.photo, style='width:70px;height:50px;')
   h1 #{i}
