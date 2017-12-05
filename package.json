@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app"
   },
-  "author": "Brad Traversy",
+  "author": "Arunav Konwar",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
