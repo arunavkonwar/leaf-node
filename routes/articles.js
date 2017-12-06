@@ -32,7 +32,7 @@ router.post('/add', upload.single('profileImage'), function (req, res) {
 
     if(errors){
       res.render('add_article', {
-        title:'Add Leaf',
+        title:'Add Leaf Type',
         errors:errors
       });
     } else {
@@ -50,6 +50,8 @@ router.post('/add', upload.single('profileImage'), function (req, res) {
       article.description = req.body.description;
       article.place = req.body.place;
       article.annotation = req.body.annotation;
+      article.annote_area = req.body.annote_area;
+      article.single= req.body.single;
 
       article.save(function(err){
         if(err){
@@ -164,6 +166,8 @@ router.post('/edit/:id', upload.single('profileImage'), function(req, res){
   article.description = req.body.description;
   article.place = req.body.place;
   article.annotation = req.body.annotation;
+  article.annote_area = req.body.annote_area;
+  article.single= req.body.single;
 
   let query = {_id:req.params.id}
 
@@ -203,11 +207,14 @@ router.delete('/:id', function(req, res){
 
 // Get Single Article
 router.get('/:id', function(req, res){
-  Article.findById(req.params.id, function(err, article){
-    User.findById(article.author, function(err, user){
-      res.render('article', {
-        article:article,
-        author: user.name
+  Article.find({}, function(err, articles){
+    Article.findById(req.params.id, function(err, article){
+      User.findById(article.author, function(err, user){
+        res.render('article', {
+          article:article,
+          author: user.name,
+          articles: articles
+        });
       });
     });
   });

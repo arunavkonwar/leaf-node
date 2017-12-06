@@ -236,6 +236,34 @@ app.get('/', function(req, res){
   });
 });
 
+//leaf types
+app.get('/leafType', function(req, res){
+  Article.find({}, function(err, articles){
+    if(err){
+      console.log(err);
+    } else {
+      res.render('query_leafType', {
+        title:'Leaf Types',
+        articles: articles
+      });
+    }
+  });
+});
+
+//single types
+app.get('/singleLeaf', function(req, res){
+  Article.find({}, function(err, articles){
+    if(err){
+      console.log(err);
+    } else {
+      res.render('query_indLeaf', {
+        title:'Single leaves uploaded',
+        articles: articles
+      });
+    }
+  });
+});
+
 // Query_annotated Route
 app.get('/annotated', function(req, res){
   Article.find({}, function(err, articles){

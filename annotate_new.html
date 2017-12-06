@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href='http://localhost:3000/articles/add'>Add Leaf Type<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -39,14 +39,7 @@
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
+
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -62,34 +55,30 @@
             <h1>Leaf Annotation</h1>
             <br>
             <br>
-            <h1>SINGLE LEAF ANNOTATION</h1>
+            <h1>Single Leaf Annotation</h1>
 <!--
                   <img src="public/leaf.jpg" class="annotatable" id="lol"/>
 -->
 
             <form action="http://localhost:3000/articles/add" method="post" enctype="multipart/form-data">
-                <p>Title
-                    <input type="text" name="title">
+
+                    <input type="text" name="title" class="form-control mr-sm-2" placeholder="Title">
                     <br>
-                    <p>Type
-                        <input type="text" name="location">
-                        <br>
-                        <p>Annotation details
-                            <input type="text" id="why" name="annote_area">
-                            <br>
-
-                            <img id="blah"  width="200" height="200" class="annotatable" />
-
-
-                            <input type="file" name="profileImage" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" >
-
-
-                            <p>
-                                <button type="submit">Submit</button>
+                    <input type="text" name="location" class="form-control mr-sm-2" placeholder="Leaf type">
+                    <br>
+                    <p>Annotation details
+                    <input type="text" id="why" name="annote_area" class="form-control mr-sm-2">
+                    <br>
+                    <br>
+                    <img id="blah"  width="200" height="200" class="annotatable" /><br>
+                    <input type="file" name="profileImage" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" >
+                    <p>
+                      <br>
+                    Single leaf:<input type="text" name="single" value="yes" class="form-control mr-sm-2" readonly>
+                    <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Submit</button>
 
             </form>
-            <button onclick="myFunction()">Click me</button>
-            -->
+            <button onclick="myFunction()" class="btn btn-outline-success my-2 my-sm-0">Update annotation</button>
         </div>
     </main>
     <!-- /.container -->

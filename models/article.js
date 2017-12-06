@@ -44,6 +44,9 @@ let articleSchema = mongoose.Schema({
   },
   annote_area:{
     type: String
+  },
+  single:{
+    type: String
   }
 });
 
