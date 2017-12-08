@@ -137,7 +137,22 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
       res.redirect('/');
     }
     res.render('edit_article', {
-      title:'Edit Leaf',
+      title:'Edit Leaf Type',
+      article:article
+    });
+  });
+});
+
+
+// Load Edit Form
+router.get('/editLeaf/:id', ensureAuthenticated, function(req, res){
+  Article.findById(req.params.id, function(err, article){
+    if(article.author != req.user._id){
+      req.flash('danger', 'Not Authorized');
+      res.redirect('/');
+    }
+    res.render('edit_leaf', {
+      title:'Edit Individual Leaf',
       article:article
     });
   });
@@ -158,7 +173,13 @@ router.post('/edit/:id', upload.single('profileImage'), function(req, res){
   article.body = req.body.body;
   article.location = req.body.location;
   article.country = req.body.country;
-  article.photo = req.file.filename;
+  if(req.file.filename){
+    article.photo = req.file.filename;
+  }
+  else {
+    article.photo = req.body.photo;
+  }
+
   article.completed = req.body.completed;
   article.division = req.body.division;
   article.season = req.body.season;

@@ -7,44 +7,67 @@ block content
   br
   h3=article.photo
   img(src="http://localhost:3000/images/"+article.photo , alt=article.photo, style='width:350px;height:250px;')
+  br
+  br
+  h6
+    b Related leaf types
   ul.list-group
     each article, i in articles
-      if (article.location=='type2')
+      if (article.location==article.location)
         a(href="/articles/"+article._id)= i+1 + '. ' + article.title
         img(src="http://localhost:3000/images/"+article.photo , alt=article.photo, style='width:70px;height:50px;')
 
-  h4
-    b Common Name
-  p= article.body
-  h4
-    b Picture Type
-  p= article.location
-  h4
-    b Shape
-  p= article.country
-  h4
-    b Margin/Edge
-  p= article.completed
-  h4
-    b Division
-  p= article.division
-  h4
-    b Season
-  p= article.season
-  h4
-    b Disease
-  p= article.disease
-  h4
-    b Description
-  p= article.description
-  h4
-    b Location
-  p= article.place
-  h4
-    b Annotation completed?
-  p= article.annotation
+  if article.single=='yes'
+    h4
+      b Title
+    p= article.title
+    h4
+      b Picture Type
+    p= article.location
+    h4
+      b Annotation area
+    p= article.annote_area
+    h4
+      b Single leaf?
+    p= article.single
+
+  else
+    h4
+      b Common Name
+    p= article.body
+    h4
+      b Picture Type
+    p= article.location
+    h4
+      b Shape
+    p= article.country
+    h4
+      b Margin/Edge
+    p= article.completed
+    h4
+      b Division
+    p= article.division
+    h4
+      b Season
+    p= article.season
+    h4
+      b Disease
+    p= article.disease
+    h4
+      b Description
+    p= article.description
+    h4
+      b Location
+    p= article.place
+    h4
+      b Annotation completed?
+    p= article.annotation
+
   hr
   if user
     if user.id ==article.author
-      a.btn.btn-default(href='/articles/edit/'+article._id) Edit
+      if article.single=='yes'
+        a.btn.btn-default(href='/articles/editLeaf/'+article._id) Edit Leaf
+      else
+        a.btn.btn-default(href='/articles/edit/'+article._id) Edit Type
       a.btn.btn-danger.delete-article(href='#',data-id=article._id) Delete

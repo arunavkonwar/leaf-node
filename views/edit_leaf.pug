@@ -1,0 +1,31 @@
+extends layout
+
+
+
+block content
+  h1 #{title}
+  form(method='POST', action='/articles/edit/'+article._id , enctype='multipart/form-data')
+    #form-group
+      label Scientific Name:
+      input.form-control(name='title', type='text', value=article.title)
+    #form-group
+      label Author:
+      input.form-control(name='author', type='text', value=article.author)
+    #form-group
+      label Leaf Type:
+      input.form-control(name='title', type='text', value=article.location)
+    #form-group
+      label Single leaf?:
+      input.form-control(name='title', type='text', value=article.single)
+    #form-group
+      label Annotate area:
+      input.form-control(name='title', type='text', value=article.annote_area)    
+    #form-group
+      label Photo:
+      textarea.form-control(name='photo')= article.photo
+      img.annotatable(src="http://localhost:3000/images/"+article.photo , alt=article.photo, style='width:350px;height:250px;')
+
+    br
+    h4 Replace image by choosing another file below
+    input(type='file', name='profileImage', multiple onchange='alertFilename()')
+    input.btn.btn-primary(type='submit',value='Submit')
