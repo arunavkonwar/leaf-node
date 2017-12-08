@@ -14,10 +14,10 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-
+//add article route
 router.post('/add', upload.single('profileImage'), function (req, res) {
     //console.log(req);
-    console.log("-------------");
+    console.log("-----ADD ARTCILE--------");
     console.log(req.file.filename);
 
     //return res.send(req.files);
@@ -29,7 +29,7 @@ router.post('/add', upload.single('profileImage'), function (req, res) {
 
     // Get Errors
     let errors = req.validationErrors();
-
+    var file= {filename:req.body.photo};
     if(errors){
       res.render('add_article', {
         title:'Add Leaf Type',
@@ -165,21 +165,23 @@ router.post('/edit/:id', upload.single('profileImage'), function(req, res){
   let article = {};
 
   console.log("-----EDIT POST--------");
-  console.log(req.file.filename);
+  //console.log(req.file.filename);
 
+  //console.log(req.body.photo);
+  //console.log(req);
 
-  article.scientificName = req.body.scientificName;
+  article.title = req.body.title;
   article.author = req.body.author;
   article.body = req.body.body;
   article.location = req.body.location;
   article.country = req.body.country;
-  if(req.file.filename){
+  if(req.file){
     article.photo = req.file.filename;
   }
   else {
+    req['file']=req.body.photo;
     article.photo = req.body.photo;
   }
-
   article.completed = req.body.completed;
   article.division = req.body.division;
   article.season = req.body.season;
@@ -228,9 +230,9 @@ router.delete('/:id', function(req, res){
 
 // Get Single Article
 router.get('/:id', function(req, res){
-  Article.find({}, function(err, articles){
     Article.findById(req.params.id, function(err, article){
       User.findById(article.author, function(err, user){
+        Article.find({location:article.location,single:"yes"}, function(err, articles){
         res.render('article', {
           article:article,
           author: user.name,

@@ -266,7 +266,7 @@ app.get('/singleLeaf', function(req, res){
 
 // Query_annotated Route
 app.get('/annotated', function(req, res){
-  Article.find({}, function(err, articles){
+  Article.find({annotation:'yes'}, function(err, articles){
     if(err){
       console.log(err);
     } else {

@@ -6,6 +6,6 @@ block content
   ul.list-group
     each article, i in articles
       li.list-group-item
-        a(href="/articles/"+article._id)= i+1 + '. ' + article.title
+        a(href="/articles/"+article._id)= i+1 + '. ' + article.location
         img(src="http://localhost:3000/images/"+article.photo , alt=article.photo, style='width:70px;height:50px;')
   h1 #{i}

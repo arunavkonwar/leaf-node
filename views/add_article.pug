@@ -81,8 +81,9 @@ block content
       label Annotation Completed?:
       div(class="input-group")
         select(class="selectpicker form-control" name="annotation")
-          option(value='yes') Yes
           option(value='no') No
+          option(value='yes') Yes
+
     br
     input(type='file', name='profileImage', multiple onchange='alertFilename()')
     input.btn.btn-primary(type='submit',value='Submit')
