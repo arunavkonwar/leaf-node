@@ -295,7 +295,7 @@ app.get('/notannotated', function(req, res){
 // Query My Leaves Route
 app.get('/myleaves', function(req, res){
   Article.find({}, function(err, articles){
-    Article.find({author:req.user_id}, function(err, articles){
+    Article.find({author:req.user._id}, function(err, articles){
       if(err){
         console.log(err);
       } else {
@@ -303,6 +303,7 @@ app.get('/myleaves', function(req, res){
           title:'Leaves annotated by me',
           articles: articles
         });
+        console.log(req);
       }
     });
   });
