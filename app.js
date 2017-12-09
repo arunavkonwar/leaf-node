@@ -224,7 +224,7 @@ app.get('*', function(req, res, next){
 
 // Home Route
 app.get('/', function(req, res){
-  Article.find({}, function(err, articles){
+  Article.find({completed:{$exists:true}}, function(err, articles){
     if(err){
       console.log(err);
     } else {
@@ -238,7 +238,7 @@ app.get('/', function(req, res){
 
 //leaf types
 app.get('/leafType', function(req, res){
-  Article.find({}, function(err, articles){
+  Article.find({location:'type2'}, function(err, articles){
     if(err){
       console.log(err);
     } else {
@@ -252,7 +252,7 @@ app.get('/leafType', function(req, res){
 
 //single types
 app.get('/singleLeaf', function(req, res){
-  Article.find({}, function(err, articles){
+  Article.find({single:'yes'}, function(err, articles){
     if(err){
       console.log(err);
     } else {
@@ -280,7 +280,7 @@ app.get('/annotated', function(req, res){
 
 // Query NOT annotated Route
 app.get('/notannotated', function(req, res){
-  Article.find({}, function(err, articles){
+  Article.find({annotation:'no'}, function(err, articles){
     if(err){
       console.log(err);
     } else {
@@ -295,14 +295,16 @@ app.get('/notannotated', function(req, res){
 // Query My Leaves Route
 app.get('/myleaves', function(req, res){
   Article.find({}, function(err, articles){
-    if(err){
-      console.log(err);
-    } else {
-      res.render('query_myleaves', {
-        title:'Leaves annotated by me',
-        articles: articles
-      });
-    }
+    Article.find({author:req.user_id}, function(err, articles){
+      if(err){
+        console.log(err);
+      } else {
+        res.render('query_myleaves', {
+          title:'Leaves annotated by me',
+          articles: articles
+        });
+      }
+    });
   });
 });
 

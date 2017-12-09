@@ -1,7 +1,7 @@
 {
   "name": "nodekb",
   "version": "1.0.0",
-  "description": "Image annotation platform for the Leaf Project",
+  "description": "Simple knowledgebase app",
   "main": "app.js",
   "scripts": {
     "start": "node app"
