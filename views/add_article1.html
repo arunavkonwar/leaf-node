@@ -7,18 +7,111 @@
 </head>
 <body>
 
-<h1>Leaf Annotation</h1>
-this is a test page
-<p> <%= count %></p>
+  <h1></h1>
+  <form method="POST" action="http://localhost:3000/articles/add" enctype="multipart/form-data">
+    <div id="form-group">
+      <label>Scientific Name:</label>
+      <input class="form-control" name="title" type="text"/>
+    </div>
+    <div id="form-group">
+      <label>Common Name:</label>
+      <textarea class="form-control" name="body"></textarea>
+    </div>
+    <div id="form-group">
+      <label>Picture Type:</label>
+      <textarea class="form-control" name="location"></textarea>
+    </div>
+    <div id="form-group">
+      <h3>Leaf Attribute</h3>
+      <label>Shape:</label>
+      <div class="input-group">
+        <select class="selectpicker form-control" name="country">
+          <option value="Ovate">Ovate</option>
+          <option value="Obovate">Obovate</option>
+          <option value="Lanceolate">Lanceolate</option>
+          <option value="Oblanceolate">Oblanceolate</option>
+          <option value="Cordate">Cordate</option>
+          <option value="Obcordate">Obcordate</option>
+          <option value="Elliptical">Elliptical</option>
+          <option value="Oblong">Oblong</option>
+          <option value="Cuneate">Cuneate</option>
+          <option value="Linear">Linear</option>
+          <option value="Peltate">Peltate</option>
+          <option value="Spatulate">Spatulate</option>
+          <option value="Reniform">Reniform</option>
+          <option value="Hastate">Hastate</option>
+        </select>
+      </div>
+    </div>
+    <div id="form-group">
+      <label>Margin Edge:</label>
+      <div class="input-group">
+        <select class="selectpicker form-control" name="completed">
+          <option value="Entire">Entire</option>
+          <option value="Dentate">Dentate</option>
+          <option value="Serrate">Serrate</option>
+          <option value="Incised">Incised</option>
+        </select>
+      </div>
+    </div>
+    <div id="form-group">
+      <label>Division:</label>
+      <div class="input-group">
+        <select class="selectpicker form-control" name="division">
+          <option value="Simple">Simple</option>
+          <option value="Compound (Pinnate) Bipennate">Compound (Pinnate) Bipennate</option>
+          <option value="Compound (Pinnate) Tripennate">Compound (Pinnate) Tripennate</option>
+          <option value="Compound (Pinnate) Decompund">Compound (Pinnate) Decompund</option>
+          <option value="Compound (Palmate) Unifoliate">Compound (Palmate) Unifoliate</option>
+          <option value="Compound (Palmate) Bifoliate">Compound (Palmate) Bifoliate</option>
+          <option value="Compound (Palmate) Trifoliate">Compound (Palmate) Trifoliate</option>
+        </select>
+      </div>
+    </div>
+    <div id="form-group">
+      <label>Season:</label>
+      <div class="input-group">
+        <select class="selectpicker form-control" name="season">
+          <option value="Spring">Spring</option>
+          <option value="Summer">Summer</option>
+          <option value="Monsoon">Monsoon</option>
+          <option value="Autumn">Autumn</option>
+          <option value="Winter">Winter</option>
+        </select>
+      </div>
+    </div>
+    <div id="form-group">
+      <label>Disease:</label>
+      <textarea class="form-control" name="disease"></textarea>
+    </div>
+    <div id="form-group">
+      <label>Description:</label>
+      <textarea class="form-control" name="description"></textarea>
+    </div>
+    <div id="form-group">
+      <label>Location:</label>
+      <textarea class="form-control" name="place"></textarea>
+    </div>
+    <div id="form-group">
+      <label>Photo:</label>
+      <textarea class="form-control" name="photo"></textarea>
+    </div>
+    <div id="form-group">
+      <label>Annotation Completed?:</label>
+      <div class="input-group">
+        <select class="selectpicker form-control" name="annotation">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+      </div>
+      <p>Annotation details
+      <input type="text" id="why" name="annote_area" class="form-control mr-sm-2">
+    </div>
+    <input type="file" name="profileImage"/>
+<input class="btn btn-primary" type="submit" value="Submit"/>
+  </form>
 
-<img src="leaf.jpg" class="annotatable" />
 
-
-<form action="http://localhost:3000/articles/add" method="post" enctype="multipart/form-data">
-  First name: <input type="text" name="title"><br>
-  Last name: <input type="text" name="author"><br>
-  <input type="submit" value="Submit">
-</form>
 
 </body>
 </html>

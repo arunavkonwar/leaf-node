@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Leaf Type Annotation page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="css/annotorious.css" />
+    <script type="text/javascript" src="annotorious.min.js"></script>
+</head>
+
+<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="http://localhost:8080">Leaf Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href='http://localhost:3000/articles/add'>Add Leaf Type<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+
+            </ul>
+            <!--
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+
+        <div class="starter-template">
+
+            <h1>Leaf Annotation</h1>
+            <br>
+            <br>
+            <h1>Leaf Type Annotation</h1>
+<!--
+                  <img src="public/leaf.jpg" class="annotatable" id="lol"/>
+-->
+
+            <form action="http://localhost:3000/articles/add" method="post" enctype="multipart/form-data">
+              <div id="form-group">
+                <input class="form-control" name="title" type="text" placeholder="Scientific Name"/>
+              </div><br>
+              <div id="form-group">
+                <textarea class="form-control" name="body" placeholder="Common Name"></textarea>
+              </div><br>
+              <div id="form-group">
+                <textarea class="form-control" name="location" placeholder="Picture Type"></textarea>
+              </div>
+              <div id="form-group">
+                <h3>Leaf Attribute</h3>
+                <label>Shape:</label>
+                <div class="input-group">
+                  <select class="selectpicker form-control" name="country">
+                    <option value="Ovate">Ovate</option>
+                    <option value="Obovate">Obovate</option>
+                    <option value="Lanceolate">Lanceolate</option>
+                    <option value="Oblanceolate">Oblanceolate</option>
+                    <option value="Cordate">Cordate</option>
+                    <option value="Obcordate">Obcordate</option>
+                    <option value="Elliptical">Elliptical</option>
+                    <option value="Oblong">Oblong</option>
+                    <option value="Cuneate">Cuneate</option>
+                    <option value="Linear">Linear</option>
+                    <option value="Peltate">Peltate</option>
+                    <option value="Spatulate">Spatulate</option>
+                    <option value="Reniform">Reniform</option>
+                    <option value="Hastate">Hastate</option>
+                  </select>
+                </div>
+              </div>
+              <div id="form-group">
+                <label>Margin Edge:</label>
+                <div class="input-group">
+                  <select class="selectpicker form-control" name="completed">
+                    <option value="Entire">Entire</option>
+                    <option value="Dentate">Dentate</option>
+                    <option value="Serrate">Serrate</option>
+                    <option value="Incised">Incised</option>
+                  </select>
+                </div>
+              </div>
+              <div id="form-group">
+                <label>Division:</label>
+                <div class="input-group">
+                  <select class="selectpicker form-control" name="division">
+                    <option value="Simple">Simple</option>
+                    <option value="Compound (Pinnate) Bipennate">Compound (Pinnate) Bipennate</option>
+                    <option value="Compound (Pinnate) Tripennate">Compound (Pinnate) Tripennate</option>
+                    <option value="Compound (Pinnate) Decompund">Compound (Pinnate) Decompund</option>
+                    <option value="Compound (Palmate) Unifoliate">Compound (Palmate) Unifoliate</option>
+                    <option value="Compound (Palmate) Bifoliate">Compound (Palmate) Bifoliate</option>
+                    <option value="Compound (Palmate) Trifoliate">Compound (Palmate) Trifoliate</option>
+                  </select>
+                </div>
+              </div>
+              <div id="form-group">
+                <label>Season:</label>
+                <div class="input-group">
+                  <select class="selectpicker form-control" name="season">
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Monsoon">Monsoon</option>
+                    <option value="Autumn">Autumn</option>
+                    <option value="Winter">Winter</option>
+                  </select>
+                </div>
+              </div>
+              <div id="form-group">
+                <textarea class="form-control" name="disease" placeholder="Disease"></textarea>
+              </div><br>
+              <div id="form-group">
+                <textarea class="form-control" name="description" placeholder="Description"></textarea>
+              </div><br>
+              <div id="form-group">
+                <textarea class="form-control" name="place" placeholder="Location"></textarea>
+              </div>
+              <div id="form-group">
+                <label>Photo:</label>
+                <textarea class="form-control" name="photo"></textarea>
+              </div>
+              <div id="form-group">
+                <label>Annotation Completed?:</label>
+                <div class="input-group">
+                  <select class="selectpicker form-control" name="annotation">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                  </select>
+                </div>
+              </div>
+              <p>Annotation details
+              <input type="text" id="why" name="annote_area" class="form-control mr-sm-2">
+              <br>
+              <br>
+              <img id="blah"  width="200" height="200" class="annotatable" /><br>
+              <input type="file" name="profileImage" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" >
+              <p>
+                <br>
+              <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Submit</button>
+
+            </form>
+            <button onclick="myFunction()" class="btn btn-outline-success my-2 my-sm-0">Update annotation</button>
+        </div>
+    </main>
+    <!-- /.container -->
+
+    <script type="text/javascript">
+        //var x= new array(5);
+        //var x=anno.getAnnotations();
+        //var height = canvas.height;
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function myFunction() {
+            var ans="";
+            for(var i=0;i<anno.getAnnotations().length;i++){
+                ans=ans+ "{" +anno.getAnnotations()[i].text+ "," + anno.getAnnotations()[i].shapes["0"].geometry.height +","+anno.getAnnotations()[i].shapes["0"].geometry.width+","+anno.getAnnotations()[i].shapes["0"].geometry.x+","+anno.getAnnotations()[i].shapes["0"].geometry.y+ "},"
+            }
+            document.getElementById("why").value = ans;
+            console.log(anno.getAnnotations());
+        }
+    </script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>
+        window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')
+    </script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+
+</html>

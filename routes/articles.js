@@ -130,7 +130,7 @@ router.post('/add', function(req, res){
 });
 */
 // Load Edit Form
-router.get('/edit/:id', ensureAuthenticated, function(req, res){
+router.get('/edit/:id', function(req, res){
   Article.findById(req.params.id, function(err, article){
     if(article.author != req.user._id){
       req.flash('danger', 'Not Authorized');
@@ -161,7 +161,7 @@ router.get('/editLeaf/:id', ensureAuthenticated, function(req, res){
 
 // Update Submit POST Route
 
-router.post('/edit/:id', upload.single('profileImage'), function(req, res){
+router.post('/edit/:id', ensureAuthenticated, upload.single('profileImage'), function(req, res){
   let article = {};
 
   console.log("-----EDIT POST--------");

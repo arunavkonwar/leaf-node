@@ -10,7 +10,7 @@ block content
       input.form-control(name='title', type='text', value=article.title)
     #form-group
       label Author:
-      input.form-control(name='author', type='text', value=article.author)
+      input.form-control(name='author', type='text', value=article.author, readonly)
     #form-group
       label Common Name:
       textarea.form-control(name='body')= article.body
@@ -74,7 +74,7 @@ block content
       textarea.form-control(name='place')= article.place
     #form-group
       label Photo:
-      textarea.form-control(name='photo')= article.photo
+      textarea.form-control(name='photo', readonly)= article.photo
       img.annotatable(src="http://localhost:3000/images/"+article.photo , alt=article.photo, style='width:350px;height:250px;')
     #form-group
       label Annotation Completed?:
